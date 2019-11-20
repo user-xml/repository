@@ -2,3 +2,34 @@ add a new function "write text into picture" by xml
 add a new function "preduce QRcode Google zxing by xml"
 add a new funciton "realize the luck draw by xml"
 add a binaryTree with C_Language for xml
+//堆栈的定义
+SSTACK SEGMENT STACK
+//定义并初始化32个字
+	DW 32 DUP(?)
+//定义结束
+SSTACK	ENDS
+//声明代码段
+CODE	SEGMENT
+//让cs寄存器保存code段的段地址，ss保存stack的段地址
+		ASSUME CS:CODE,SS:SSTACK
+//将DS寄存器的内容压入堆栈
+START:PUSH DS
+//将16位数据7000H传送到AX寄存器
+	MOV AX,7000H
+//将AX寄存器的16位数据传送到DS寄存器
+	MOV DS,AX
+//将16位数据0000H传送到SI寄存器
+	MOV SI,0000H
+//设定循环次数为16
+	MOV CX,16
+//xor是逻辑“异或”指令，该条语句将寄存器AX值变为0
+	XOR AX.AX
+//把
+AA1:MOV[SI],AX
+	INC SI
+	INC SI
+	INC AX
+	LOOP AA1
+AA2:JMP AA2
+CODE ENDS
+END START
